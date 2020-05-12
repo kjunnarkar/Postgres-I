@@ -3,25 +3,29 @@
 module.exports = {
 
   development: {
-    client: 'pg',
-    connection: {
-      filename: './database/usersPG.db'
-    },
+    client: 'postgresql',
     useNullAsDefault: true,
+    connection: {
+      database: process.env.DB_DEV_NAME,
+      user:     process.env.DB_USER,
+      password: process.env.DB_PASSWORD
+    },
     migrations: {
       directory: './database/migrations',
     },
     seeds: {
       directory: './database/seeds',
     },
-  },
+  },  
 
   testing: {
-    client: 'pg',
-    connection: {
-      filename: './database/testPG.db'
-    },
+    client: 'postgresql',
     useNullAsDefault: true,
+    connection: {
+      database: process.env.DB_TEST_NAME,
+      user:     process.env.DB_USER,
+      password: process.env.DB_PASSWORD
+    },
     migrations: {
       directory: './database/migrations',
     },
@@ -29,37 +33,4 @@ module.exports = {
       directory: './database/seeds',
     },
   },
-/*
-  staging: {
-    client: 'postgresql',
-    connection: {
-      database: 'my_db',
-      user:     'username',
-      password: 'password'
-    },
-    pool: {
-      min: 2,
-      max: 10
-    },
-    migrations: {
-      tableName: 'knex_migrations'
-    }
-  },
-
-  production: {
-    client: 'postgresql',
-    connection: {
-      database: 'my_db',
-      user:     'username',
-      password: 'password'
-    },
-    pool: {
-      min: 2,
-      max: 10
-    },
-    migrations: {
-      tableName: 'knex_migrations'
-    }
-  }
-*/
 };
